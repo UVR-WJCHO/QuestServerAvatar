@@ -2208,7 +2208,7 @@ MonoBehaviour:
   footTracking: 0
   footGroundOffset: 0.1
   useCalibrationData: 1
-  calibrationData: {fileID: 0}
+  calibrationData: {fileID: 11400000, guid: aa3ebb6a41a9452419687be7d5498688, type: 2}
 --- !u!95 &797836861
 Animator:
   serializedVersion: 7
@@ -6263,6 +6263,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1055126577752158228, guid: 1eb6969b7ef8ed44a9a446e718710222, type: 3}
+      propertyPath: host
+      value: 127.0.0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1055126577752158228, guid: 1eb6969b7ef8ed44a9a446e718710222, type: 3}
+      propertyPath: port
+      value: 52734
+      objectReference: {fileID: 0}
     - target: {fileID: 1055126577752158228, guid: 1eb6969b7ef8ed44a9a446e718710222, type: 3}
       propertyPath: useLegacyPipes
       value: 0
