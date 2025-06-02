@@ -6,12 +6,20 @@ DEBUG = True
 
 # Change UDP connection settings (must match Unity side)
 USE_LEGACY_PIPES = False # Only supported on Windows (if True, use NamedPipes rather than UDP sockets)
+
+"""
+HOST, PORT for main_kinect.py 
+- HOST must be fixed ip
+- PORT must be allowed in ict.kaist.ac.kr for external connection
+"""
 HOST = '192.168.0.5' # '127.0.0.1'
-PORT = 52733
+PORT = 52733   # test port for internal connection
 
-HOST_K = '192.168.0.198'
+"""
+Port for local connection (server - Quest)
+- must be same with Port in Unity Pipeserver.cs
+"""
 PORT_Unity = 52734
-
 
 
 
