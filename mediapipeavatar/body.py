@@ -9,6 +9,8 @@ import threading
 import time
 import global_vars 
 import struct
+from datetime import datetime, timezone
+
 
 # the capture thread captures images from the WebCam on a separate thread (for performance)
 class CaptureThread(threading.Thread):
@@ -102,6 +104,10 @@ class BodyThread(threading.Thread):
 
                     print("z : ", hand_world_landmarks.landmark[0].z)
 
+                # add local time (µs)
+                utc_now = datetime.now(timezone.utc)
+                utc_string = utc_now.strftime("%Y-%m-%d %H:%M:%S.%f %Z")
+                self.data += utc_string + "\n"
                 self.send_data(self.data)
                     
         self.pipe.close()

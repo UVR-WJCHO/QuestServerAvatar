@@ -22,6 +22,7 @@ class ServerUDP:
             data, addr = self.recv_socket.recvfrom(65535)  # 최대 65,535 바이트 수신
             message = data.decode('utf-8', errors='ignore')
             print(f"Received from {addr}")#: {message}")
+            print(message.split('\n')[-2])
 
             # 수신한 데이터 그대로 127.0.0.1로 전송
             self.send_socket.sendto(data, (self.forward_ip, self.forward_port))
