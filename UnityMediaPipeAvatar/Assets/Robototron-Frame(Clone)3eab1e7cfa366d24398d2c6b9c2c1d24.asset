@@ -1,0 +1,120 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f1260b785da3e24ebe737764cc33de0, type: 3}
+  m_Name: Robototron-Frame(Clone)3eab1e7cfa366d24398d2c6b9c2c1d24
+  m_EditorClassIdentifier: 
+  note: 
+  parentCalibrationData:
+  - bone: 14
+    data:
+      parentn: Robototron-Frame(Clone)/Robototron-Armature/Hips/Spine/Spine1/Spine2/Shoulder.R/Arm.R/
+      childn: Robototron-Frame(Clone)/Robototron-Armature/Hips/Spine/Spine1/Spine2/Shoulder.R/Arm.R/ForeArm.R/
+      tparentn: PipeServer/Body Parent/RIGHT_SHOULDER/
+      tchildn: PipeServer/Body Parent/RIGHT_ELBOW/
+      initialDir: {x: -0.9646184, y: -0.2540675, z: 0.07043498}
+      initialRotation: {x: 0.55431145, y: -0.4972023, z: 0.4671818, w: 0.47672814}
+      targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  - bone: 16
+    data:
+      parentn: Robototron-Frame(Clone)/Robototron-Armature/Hips/Spine/Spine1/Spine2/Shoulder.R/Arm.R/ForeArm.R/
+      childn: Robototron-Frame(Clone)/Robototron-Armature/Hips/Spine/Spine1/Spine2/Shoulder.R/Arm.R/ForeArm.R/Hand.R/
+      tparentn: PipeServer/Body Parent/RIGHT_ELBOW/
+      tchildn: PipeServer/Body Parent/RIGHT_WRIST/
+      initialDir: {x: -0.9526918, y: -0.24733217, z: 0.17664957}
+      initialRotation: {x: 0.50007796, y: -0.5521377, z: 0.4846456, w: 0.45845908}
+      targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  - bone: 2
+    data:
+      parentn: Robototron-Frame(Clone)/Robototron-Armature/Hips/UpLeg.R/
+      childn: Robototron-Frame(Clone)/Robototron-Armature/Hips/UpLeg.R/Leg.R/
+      tparentn: PipeServer/Body Parent/RIGHT_HIP/
+      tchildn: PipeServer/Body Parent/RIGHT_KNEE/
+      initialDir: {x: 0.06620206, y: -0.9951604, z: 0.07261558}
+      initialRotation: {x: 0.945572, y: -0.042481452, z: 0.31968343, w: 0.043489575}
+      targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  - bone: 4
+    data:
+      parentn: Robototron-Frame(Clone)/Robototron-Armature/Hips/UpLeg.R/Leg.R/
+      childn: Robototron-Frame(Clone)/Robototron-Armature/Hips/UpLeg.R/Leg.R/Foot.R/
+      tparentn: PipeServer/Body Parent/RIGHT_KNEE/
+      tchildn: PipeServer/Body Parent/RIGHT_ANKLE/
+      initialDir: {x: 0.17256027, y: -0.802273, z: 0.5714727}
+      initialRotation: {x: 0.98780996, y: -0.04952998, z: -0.12993672, w: 0.06996173}
+      targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  - bone: 13
+    data:
+      parentn: Robototron-Frame(Clone)/Robototron-Armature/Hips/Spine/Spine1/Spine2/Shoulder.L/Arm.L/
+      childn: Robototron-Frame(Clone)/Robototron-Armature/Hips/Spine/Spine1/Spine2/Shoulder.L/Arm.L/ForeArm.L/
+      tparentn: PipeServer/Body Parent/LEFT_SHOULDER/
+      tchildn: PipeServer/Body Parent/LEFT_ELBOW/
+      initialDir: {x: 0.797868, y: -0.5683361, z: -0.20099895}
+      initialRotation: {x: 0.55421704, y: 0.49726772, z: -0.4668908, w: 0.47705477}
+      targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  - bone: 15
+    data:
+      parentn: Robototron-Frame(Clone)/Robototron-Armature/Hips/Spine/Spine1/Spine2/Shoulder.L/Arm.L/ForeArm.L/
+      childn: Robototron-Frame(Clone)/Robototron-Armature/Hips/Spine/Spine1/Spine2/Shoulder.L/Arm.L/ForeArm.L/Hand.L/
+      tparentn: PipeServer/Body Parent/LEFT_ELBOW/
+      tchildn: PipeServer/Body Parent/LEFT_WRIST/
+      initialDir: {x: 0.94028676, y: -0.15332542, z: -0.30389494}
+      initialRotation: {x: 0.500247, y: 0.552086, z: -0.48467872, w: 0.45830208}
+      targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  - bone: 1
+    data:
+      parentn: Robototron-Frame(Clone)/Robototron-Armature/Hips/UpLeg.L/
+      childn: Robototron-Frame(Clone)/Robototron-Armature/Hips/UpLeg.L/Leg.L/
+      tparentn: PipeServer/Body Parent/LEFT_HIP/
+      tchildn: PipeServer/Body Parent/LEFT_KNEE/
+      initialDir: {x: -0.07682484, y: -0.95955384, z: 0.27084008}
+      initialRotation: {x: 0.94348323, y: 0.042342752, z: -0.3258332, w: 0.04334855}
+      targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  - bone: 3
+    data:
+      parentn: Robototron-Frame(Clone)/Robototron-Armature/Hips/UpLeg.L/Leg.L/
+      childn: Robototron-Frame(Clone)/Robototron-Armature/Hips/UpLeg.L/Leg.L/Foot.L/
+      tparentn: PipeServer/Body Parent/LEFT_KNEE/
+      tchildn: PipeServer/Body Parent/LEFT_ANKLE/
+      initialDir: {x: 0.17185263, y: -0.8876043, z: 0.42734668}
+      initialRotation: {x: 0.98747665, y: 0.049742337, z: 0.13220769, w: 0.070261806}
+      targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  spineUpDown:
+    parentn: Robototron-Frame(Clone)/Robototron-Armature/Hips/Spine/
+    childn: Robototron-Frame(Clone)/Robototron-Armature/Hips/Spine/Spine1/Spine2/Neck/
+    tparentn: VirtualHip/
+    tchildn: VirtualNeck/
+    initialDir: {x: -0.06368641, y: 0.9323868, z: -0.35580724}
+    initialRotation: {x: -0, y: 0.99833035, z: 0.057762116, w: 0}
+    targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  hipsTwist:
+    parentn: Robototron-Frame(Clone)/Robototron-Armature/Hips/
+    childn: Robototron-Frame(Clone)/Robototron-Armature/Hips/
+    tparentn: PipeServer/Body Parent/RIGHT_HIP/
+    tchildn: PipeServer/Body Parent/LEFT_HIP/
+    initialDir: {x: 0.9735722, y: 0.037661232, z: -0.22525266}
+    initialRotation: {x: -0, y: 1, z: -0, w: 0}
+    targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  chest:
+    parentn: Robototron-Frame(Clone)/Robototron-Armature/Hips/Spine/Spine1/
+    childn: Robototron-Frame(Clone)/Robototron-Armature/Hips/Spine/Spine1/
+    tparentn: PipeServer/Body Parent/RIGHT_HIP/
+    tchildn: PipeServer/Body Parent/LEFT_HIP/
+    initialDir: {x: 0.9735722, y: 0.037661232, z: -0.22525266}
+    initialRotation: {x: -0, y: 0.99833035, z: 0.057762146, w: 0}
+    targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  head:
+    parentn: Robototron-Frame(Clone)/Robototron-Armature/Hips/Spine/Spine1/Spine2/Neck/
+    childn: Robototron-Frame(Clone)/Robototron-Armature/Hips/Spine/Spine1/Spine2/Neck/Head/
+    tparentn: VirtualNeck/
+    tchildn: PipeServer/Body Parent/NOSE/
+    initialDir: {x: 0.11598328, y: 0.26875415, z: -0.95620036}
+    initialRotation: {x: -0, y: 1, z: -0, w: 0}
+    targetRotation: {x: 0, y: 0, z: 0, w: 0}
