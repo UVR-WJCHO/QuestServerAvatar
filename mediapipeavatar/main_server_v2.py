@@ -3,22 +3,29 @@ import sys
 import threading
 import global_vars
 
+
+forward_ip, forward_port = None, None
+
 class ServerUDP:
-    def __init__(self, ip, port, forward_ip, forward_port):
+    def __init__(self, ip, port):
         self.ip = ip
         self.port = port
-        self.forward_ip = forward_ip
-        self.forward_port = forward_port
+        # self.forward_ip = forward_ip
+        # self.forward_port = forward_port
         self.running = True  # 프로그램 실행 상태 확인
 
         try:
             self.recv_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
             self.recv_socket.bind((self.ip, self.port))
 
-            self.send_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            self.server_socket.bind(('192.168.0.5', 8080))
+            self.server_socket.listen(1)
+
+            self.send_socket = None
 
             print(f"Listening on {self.ip}:{self.port}")
-            print(f"Forwarding received data to {self.forward_ip}:{self.forward_port}")
+            # print(f"Forwarding received data to {self.forward_ip}:{self.forward_port}")
 
         except Exception as e:
             print(f"Error initializing server: {e}")
@@ -45,8 +52,10 @@ class ServerUDP:
                 modified_data, log_time = self.process_message(message)
                 print("time : ", log_time)
 
-                self.send_socket.sendto(modified_data, (self.forward_ip, self.forward_port))
-                print(f"Forwarded to {self.forward_ip}:{self.forward_port}")
+                if self.send_socket:
+                    self.send_socket.sendall(modified_data)
+                    print("sending ...")
+                    # print(f"Forwarded to {self.forward_ip}:{self.forward_port}")
 
             except socket.timeout:
                 print("No data received. Server shutting down.")
@@ -59,16 +68,33 @@ class ServerUDP:
     def shutdown(self):
         self.running = False
         self.recv_socket.close()
-        self.send_socket.close()
+        if self.send_socket:
+            self.send_socket.close()
         print("Server stopped.")
         sys.exit(0)
+
+    def accept_connection(self):
+        """클라이언트 연결을 수락"""
+        while self.running:
+            try:
+                self.send_socket, client_addr = self.server_socket.accept()
+                print(f"Client connected from {client_addr}")
+            except socket.error as e:
+                print(f"Error accepting connection: {e}")
+                self.shutdown()
+
 
 def wait_for_exit(server):
     input("Press Enter to stop the server...\n")
     server.shutdown()
 
 if __name__ == "__main__":
-    server = ServerUDP("0.0.0.0", global_vars.PORT, "192.168.0.3", global_vars.PORT_Unity)
+    server = ServerUDP("0.0.0.0", global_vars.PORT)
+
+    # 클라이언트 연결 수락을 별도 스레드에서 실행
+    accept_thread = threading.Thread(target=server.accept_connection)
+    accept_thread.start()
+
     input_thread = threading.Thread(target=wait_for_exit, args=(server,))
     input_thread.start()
 
