@@ -28,5 +28,5 @@ class ServerUDP:
             print(f"Forwarded to {self.forward_ip}:{self.forward_port}")
 
 if __name__ == "__main__":
-    server = ServerUDP(global_vars.HOST_K, global_vars.PORT_K, "127.0.0.1", global_vars.PORT)
+    server = ServerUDP("0.0.0.0", global_vars.PORT, "127.0.0.1", global_vars.PORT_Unity)
     server.start()

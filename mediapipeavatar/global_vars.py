@@ -7,10 +7,10 @@ DEBUG = True
 # Change UDP connection settings (must match Unity side)
 USE_LEGACY_PIPES = False # Only supported on Windows (if True, use NamedPipes rather than UDP sockets)
 HOST = '192.168.0.5' # '127.0.0.1'
-PORT = 52734
+PORT = 52733
 
 HOST_K = '192.168.0.198'
-PORT_K = 52733
+PORT_Unity = 52734
 
 
 
