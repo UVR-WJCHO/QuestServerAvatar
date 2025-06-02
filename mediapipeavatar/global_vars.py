@@ -6,8 +6,14 @@ DEBUG = True
 
 # Change UDP connection settings (must match Unity side)
 USE_LEGACY_PIPES = False # Only supported on Windows (if True, use NamedPipes rather than UDP sockets)
-HOST = '127.0.0.1'
-PORT = 52733
+HOST = '192.168.0.5' # '127.0.0.1'
+PORT = 52734
+
+HOST_K = '192.168.0.198'
+PORT_K = 52733
+
+
+
 
 # Settings do not universally apply, not all WebCams support all frame rates and resolutions
 CAM_INDEX = 0 # OpenCV2 webcam index, try changing for using another (ex: external) webcam.

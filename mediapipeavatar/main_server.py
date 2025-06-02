@@ -1,4 +1,6 @@
 import socket
+import global_vars
+
 
 class ServerUDP:
     def __init__(self, ip, port, forward_ip, forward_port):
@@ -26,5 +28,5 @@ class ServerUDP:
             print(f"Forwarded to {self.forward_ip}:{self.forward_port}")
 
 if __name__ == "__main__":
-    server = ServerUDP("0.0.0.0", 52733, "127.0.0.1", 52734)
+    server = ServerUDP(global_vars.HOST_K, global_vars.PORT_K, "127.0.0.1", global_vars.PORT)
     server.start()
