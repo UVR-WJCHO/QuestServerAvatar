@@ -19,7 +19,7 @@ class ServerUDP:
             self.recv_socket.bind((self.ip, self.port))
 
             self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            self.server_socket.bind(('192.168.0.5', 8080))
+            self.server_socket.bind((global_vars.HOST, 8080))
             self.server_socket.listen(1)
 
             self.send_socket = None
