@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f1260b785da3e24ebe737764cc33de0, type: 3}
-  m_Name: Avatarc67995ad882c06444a00727a6f23f1f8
+  m_Name: Avatar_test6f8a41c047dc0fd48ac62851b2d23e7a
   m_EditorClassIdentifier: 
   note: 
   parentCalibrationData:
@@ -20,7 +20,7 @@ MonoBehaviour:
       childn: Avatar_test/Robototron-Armature/Hips/Spine/Spine1/Spine2/Shoulder.R/Arm.R/ForeArm.R/
       tparentn: QuestNetworkManager/Body Parent/RIGHT_SHOULDER/
       tchildn: QuestNetworkManager/Body Parent/RIGHT_ELBOW/
-      initialDir: {x: -0.9972591, y: -0.032313425, z: 0.06655999}
+      initialDir: {x: -0.9823735, y: -0.17607863, z: 0.06275869}
       initialRotation: {x: 0.55431145, y: -0.4972023, z: 0.4671818, w: 0.47672814}
       targetRotation: {x: 0, y: 0, z: 0, w: 0}
   - bone: 16
@@ -29,7 +29,7 @@ MonoBehaviour:
       childn: Avatar_test/Robototron-Armature/Hips/Spine/Spine1/Spine2/Shoulder.R/Arm.R/ForeArm.R/Hand.R/
       tparentn: QuestNetworkManager/Body Parent/RIGHT_ELBOW/
       tchildn: QuestNetworkManager/Body Parent/RIGHT_WRIST/
-      initialDir: {x: -0.9838834, y: -0.05707693, z: 0.1694572}
+      initialDir: {x: -0.9310402, y: -0.28969333, z: 0.22190508}
       initialRotation: {x: 0.50007796, y: -0.5521377, z: 0.4846456, w: 0.45845908}
       targetRotation: {x: 0, y: 0, z: 0, w: 0}
   - bone: 2
@@ -38,7 +38,7 @@ MonoBehaviour:
       childn: Avatar_test/Robototron-Armature/Hips/UpLeg.R/Leg.R/
       tparentn: QuestNetworkManager/Body Parent/RIGHT_HIP/
       tchildn: QuestNetworkManager/Body Parent/RIGHT_KNEE/
-      initialDir: {x: 0.04310345, y: -0.9964668, z: 0.07208351}
+      initialDir: {x: 0.01995354, y: -0.9992751, z: 0.03242089}
       initialRotation: {x: 0.945572, y: -0.042481452, z: 0.31968343, w: 0.043489575}
       targetRotation: {x: 0, y: 0, z: 0, w: 0}
   - bone: 4
@@ -47,7 +47,7 @@ MonoBehaviour:
       childn: Avatar_test/Robototron-Armature/Hips/UpLeg.R/Leg.R/Foot.R/
       tparentn: QuestNetworkManager/Body Parent/RIGHT_KNEE/
       tchildn: QuestNetworkManager/Body Parent/RIGHT_ANKLE/
-      initialDir: {x: 0.118547074, y: -0.80617106, z: 0.5796851}
+      initialDir: {x: 0.108522184, y: -0.85220385, z: 0.5118315}
       initialRotation: {x: 0.98780996, y: -0.04952998, z: -0.12993672, w: 0.06996173}
       targetRotation: {x: 0, y: 0, z: 0, w: 0}
   - bone: 13
@@ -56,7 +56,7 @@ MonoBehaviour:
       childn: Avatar_test/Robototron-Armature/Hips/Spine/Spine1/Spine2/Shoulder.L/Arm.L/ForeArm.L/
       tparentn: QuestNetworkManager/Body Parent/LEFT_SHOULDER/
       tchildn: QuestNetworkManager/Body Parent/LEFT_ELBOW/
-      initialDir: {x: 0.8806514, y: -0.41154236, z: -0.23470384}
+      initialDir: {x: 0.82511395, y: -0.50587326, z: -0.25155345}
       initialRotation: {x: 0.55421704, y: 0.49726772, z: -0.4668908, w: 0.47705477}
       targetRotation: {x: 0, y: 0, z: 0, w: 0}
   - bone: 15
@@ -65,7 +65,7 @@ MonoBehaviour:
       childn: Avatar_test/Robototron-Armature/Hips/Spine/Spine1/Spine2/Shoulder.L/Arm.L/ForeArm.L/Hand.L/
       tparentn: QuestNetworkManager/Body Parent/LEFT_ELBOW/
       tchildn: QuestNetworkManager/Body Parent/LEFT_WRIST/
-      initialDir: {x: 0.9614145, y: -0.009128129, z: -0.27495214}
+      initialDir: {x: 0.9360406, y: -0.2091783, z: -0.28297076}
       initialRotation: {x: 0.500247, y: 0.552086, z: -0.48467872, w: 0.45830208}
       targetRotation: {x: 0, y: 0, z: 0, w: 0}
   - bone: 1
@@ -74,7 +74,7 @@ MonoBehaviour:
       childn: Avatar_test/Robototron-Armature/Hips/UpLeg.L/Leg.L/
       tparentn: QuestNetworkManager/Body Parent/LEFT_HIP/
       tchildn: QuestNetworkManager/Body Parent/LEFT_KNEE/
-      initialDir: {x: -0.04931956, y: -0.96163213, z: 0.2698726}
+      initialDir: {x: -0.108145446, y: -0.9725383, z: 0.20609187}
       initialRotation: {x: 0.94348323, y: 0.042342752, z: -0.3258332, w: 0.04334855}
       targetRotation: {x: 0, y: 0, z: 0, w: 0}
   - bone: 3
@@ -83,7 +83,7 @@ MonoBehaviour:
       childn: Avatar_test/Robototron-Armature/Hips/UpLeg.L/Leg.L/Foot.L/
       tparentn: QuestNetworkManager/Body Parent/LEFT_KNEE/
       tchildn: QuestNetworkManager/Body Parent/LEFT_ANKLE/
-      initialDir: {x: 0.12975727, y: -0.87237084, z: 0.47130898}
+      initialDir: {x: 0.17744489, y: -0.92017066, z: 0.34899744}
       initialRotation: {x: 0.98747665, y: 0.049742337, z: 0.13220769, w: 0.070261806}
       targetRotation: {x: 0, y: 0, z: 0, w: 0}
   - bone: 5
@@ -92,7 +92,7 @@ MonoBehaviour:
       childn: Avatar_test/Robototron-Armature/Hips/UpLeg.L/Leg.L/Foot.L/ToeBase.L/
       tparentn: QuestNetworkManager/Body Parent/LEFT_ANKLE/
       tchildn: QuestNetworkManager/Body Parent/LEFT_FOOT_INDEX/
-      initialDir: {x: 0.3328083, y: -0.4995609, z: -0.7997984}
+      initialDir: {x: 0.2987526, y: -0.31548947, z: -0.90067375}
       initialRotation: {x: 0.9488578, y: -0.005495622, z: -0.024188606, w: -0.3147281}
       targetRotation: {x: 0, y: 0, z: 0, w: 0}
   - bone: 6
@@ -101,7 +101,7 @@ MonoBehaviour:
       childn: Avatar_test/Robototron-Armature/Hips/UpLeg.R/Leg.R/Foot.R/ToeBase.R/
       tparentn: QuestNetworkManager/Body Parent/RIGHT_ANKLE/
       tchildn: QuestNetworkManager/Body Parent/RIGHT_FOOT_INDEX/
-      initialDir: {x: 0.024642339, y: -0.9534074, z: -0.30067766}
+      initialDir: {x: -0.15080768, y: -0.8794747, z: -0.45142156}
       initialRotation: {x: 0.9488566, y: 0.0054927794, z: 0.024188101, w: -0.3147314}
       targetRotation: {x: 0, y: 0, z: 0, w: 0}
   spineUpDown:
@@ -109,7 +109,7 @@ MonoBehaviour:
     childn: Avatar_test/Robototron-Armature/Hips/Spine/Spine1/Spine2/Neck/
     tparentn: VirtualHip/
     tchildn: VirtualNeck/
-    initialDir: {x: -0.05927499, y: 0.9405139, z: -0.33454475}
+    initialDir: {x: -0.07781924, y: 0.9416091, z: -0.32759193}
     initialRotation: {x: -0, y: 0.99833035, z: 0.057762116, w: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
   hipsTwist:
@@ -117,7 +117,7 @@ MonoBehaviour:
     childn: Avatar_test/Robototron-Armature/Hips/
     tparentn: QuestNetworkManager/Body Parent/RIGHT_HIP/
     tchildn: QuestNetworkManager/Body Parent/LEFT_HIP/
-    initialDir: {x: 0.97671825, y: 0.031363454, z: -0.21222131}
+    initialDir: {x: 0.9692964, y: 0.02925942, z: -0.24414833}
     initialRotation: {x: -0, y: 1, z: -0, w: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
   chest:
@@ -125,7 +125,7 @@ MonoBehaviour:
     childn: Avatar_test/Robototron-Armature/Hips/Spine/Spine1/
     tparentn: QuestNetworkManager/Body Parent/RIGHT_HIP/
     tchildn: QuestNetworkManager/Body Parent/LEFT_HIP/
-    initialDir: {x: 0.97671825, y: 0.031363454, z: -0.21222131}
+    initialDir: {x: 0.9692964, y: 0.02925942, z: -0.24414833}
     initialRotation: {x: -0, y: 0.99833035, z: 0.057762146, w: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}
   head:
@@ -133,6 +133,6 @@ MonoBehaviour:
     childn: Avatar_test/Robototron-Armature/Hips/Spine/Spine1/Spine2/Neck/Head/
     tparentn: VirtualNeck/
     tchildn: QuestNetworkManager/Body Parent/NOSE/
-    initialDir: {x: 0.05265411, y: 0.2779399, z: -0.95915425}
+    initialDir: {x: 0.046116028, y: 0.25464943, z: -0.9659332}
     initialRotation: {x: -0, y: 1, z: -0, w: 0}
     targetRotation: {x: 0, y: 0, z: 0, w: 0}

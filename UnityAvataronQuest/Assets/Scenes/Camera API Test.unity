@@ -12251,7 +12251,7 @@ MonoBehaviour:
   footTracking: 1
   footGroundOffset: 0.1
   useCalibrationData: 1
-  calibrationData: {fileID: 11400000, guid: 089da5dcbd6c92b40a7f662c4f75ac09, type: 2}
+  calibrationData: {fileID: 11400000, guid: 508b1384d8268104c98840d7b9884575, type: 2}
   server: {fileID: 1077534805}
 --- !u!95 &1680412636
 Animator:
