@@ -19,7 +19,7 @@ class ServerUDP:
             self.recv_socket.bind((self.ip, self.port))
 
             self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            self.server_socket.bind((global_vars.HOST, 8080))
+            self.server_socket.bind((global_vars.HOST, global_vars.PORT_Unity))
             self.server_socket.listen(1)
 
             self.send_socket = None
@@ -51,6 +51,7 @@ class ServerUDP:
 
                 modified_data, log_time = self.process_message(message)
                 print("time : ", log_time)
+                # print("data: ", modified_data)
 
                 if self.send_socket:
                     self.send_socket.sendall(modified_data)
@@ -87,6 +88,7 @@ class ServerUDP:
 def wait_for_exit(server):
     input("Press Enter to stop the server...\n")
     server.shutdown()
+
 
 if __name__ == "__main__":
     server = ServerUDP("0.0.0.0", global_vars.PORT)

@@ -12,13 +12,14 @@ HOST, PORT for main_kinect.py
 - HOST must be fixed ip
 - PORT must be allowed in ict.kaist.ac.kr for external connection
 """
-HOST = '192.168.0.4' # n5 2268 pc2 : 192.168.0.5 / n5 2325 server : 210.117.228.110
+HOST = '192.168.0.5' # n5 2268 pc2 : 192.168.0.5 / n5 2325 server : 210.117.228.110
 PORT = 52733   # test port for internal connection
 
 """
 Port for local connection (server - Quest)
 - must be same with Port in Unity Pipeserver.cs
 """
+HOST_Unity = '127.0.0.1'  # Quest wifi ip : 192.168.0.7 , local : 127.0.0.1
 PORT_Unity = 52734
 
 
