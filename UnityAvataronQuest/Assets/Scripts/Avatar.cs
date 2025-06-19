@@ -15,7 +15,7 @@ public class Avatar : MonoBehaviour
 
     public bool Calibrated { get; private set; }
 
-    private PipeServer server;
+    public Quest3_NetworkReceiver server;
 
     private Quaternion initialRotation;
     private Vector3 initialPosition;
@@ -34,11 +34,12 @@ public class Avatar : MonoBehaviour
             CalibrateFromPersistent();
         }
 
-        server = FindObjectOfType<PipeServer>();
-        if (server == null)
-        {
-            Debug.LogError("You must have a PipeServer in the scene!");
-        }
+        // server = FindObjectOfType<Quest3_NetworkReceiver>();
+        // if (server == null)
+        // {
+        //     Debug.LogError("You must have a PipeServer(Quest3_NetworkReceiver) in the scene!");
+        // }
+        
     }
 
     public void CalibrateFromPersistent()
