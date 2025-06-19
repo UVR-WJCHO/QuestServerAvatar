@@ -68,7 +68,7 @@ def wait_for_exit(server):
     server.shutdown()
 
 if __name__ == "__main__":
-    server = ServerUDP("0.0.0.0", global_vars.PORT, "192.168.0.3", global_vars.PORT_Unity)
+    server = ServerUDP("0.0.0.0", global_vars.PORT, global_vars.HOST_Unity, global_vars.PORT_Unity)
     input_thread = threading.Thread(target=wait_for_exit, args=(server,))
     input_thread.start()
 
