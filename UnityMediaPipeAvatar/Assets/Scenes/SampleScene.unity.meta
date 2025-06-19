@@ -1,7 +1,14 @@
 fileFormatVersion: 2
-guid: 4d5a96587552a7d469f31919db2ccf63
+guid: f5567c88ecc89844e806efc5515413c1
 DefaultImporter:
   externalObjects: {}
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 256435
+  packageName: Humanoid Robot Avatar Set - Mecanim Compatible
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/SampleScene.unity
+  uploadId: 607586

@@ -600,7 +600,8 @@ ModelImporter:
     - name: LeftHandIndex4
       parentName: LeftHandIndex3
       position: {x: 0.0000044786743, y: 0.00027083833, z: -0.000000002712477}
-      rotation: {x: 0.000000029802315, y: 0.000000027345543, z: -0.000000021199297, w: 1}
+      rotation: {x: 0.000000029802315, y: 0.000000027345543, z: -0.000000021199297,
+        w: 1}
       scale: {x: 1, y: 0.9999999, z: 0.99999994}
     - name: LeftHandMiddle1
       parentName: LeftHand
@@ -620,7 +621,8 @@ ModelImporter:
     - name: LeftHandMiddle4
       parentName: LeftHandMiddle3
       position: {x: -0.0000008516945, y: 0.00031582438, z: -0.0000000010069925}
-      rotation: {x: 0.000000042840835, y: 0.000000060520534, z: -0.000000008325177, w: 1}
+      rotation: {x: 0.000000042840835, y: 0.000000060520534, z: -0.000000008325177,
+        w: 1}
       scale: {x: 1.0000006, y: 1.0000004, z: 1.0000002}
     - name: LeftHandRing1
       parentName: LeftHand
@@ -660,7 +662,8 @@ ModelImporter:
     - name: LeftHandPinky4
       parentName: LeftHandPinky3
       position: {x: 0.0000007060915, y: 0.00020609777, z: -0.000000001899898}
-      rotation: {x: 0.00000005960463, y: -0.0000000052077085, z: -0.000000002905501, w: 1}
+      rotation: {x: 0.00000005960463, y: -0.0000000052077085, z: -0.000000002905501,
+        w: 1}
       scale: {x: 0.9999999, y: 1.0000001, z: 1.0000002}
     - name: RightShoulder
       parentName: Spine2
@@ -849,7 +852,8 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: b55c397918b3f224da7cb1afd8d43990, type: 3}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: b55c397918b3f224da7cb1afd8d43990,
+    type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
@@ -860,3 +864,10 @@ ModelImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 256435
+  packageName: Humanoid Robot Avatar Set - Mecanim Compatible
+  packageVersion: 1.0
+  assetPath: Assets/LB3D/Robototron/Animation/Animations/Robototron-Display.fbx
+  uploadId: 607586

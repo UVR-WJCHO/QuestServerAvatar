@@ -6,3 +6,10 @@ NativeFormatImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 256435
+  packageName: Humanoid Robot Avatar Set - Mecanim Compatible
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/SampleScene/LightingData.asset
+  uploadId: 607586
