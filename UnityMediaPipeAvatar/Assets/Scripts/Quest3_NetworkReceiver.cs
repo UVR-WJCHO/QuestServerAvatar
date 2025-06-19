@@ -12,7 +12,7 @@ using UnityEngine;
  */
 
 [DefaultExecutionOrder(-1)]
-public class PipeServer : MonoBehaviour
+public class Quest3_NetworkReceiver : MonoBehaviour
 {
     public bool useLegacyPipes = false; // True to use NamedPipes for interprocess communication (not supported on Linux)
     public string host = "127.0.0.1"; // This machines host.

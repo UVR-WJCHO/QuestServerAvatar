@@ -19,7 +19,7 @@ PORT = 52733   # test port for internal connection
 Port for local connection (server - Quest)
 - must be same with Port in Unity Pipeserver.cs
 """
-HOST_Unity = '127.0.0.1'  # Quest wifi ip : 192.168.0.7 , local : 127.0.0.1
+HOST_Unity = '192.168.0.7'  # Quest wifi ip : 192.168.0.7 , local : 127.0.0.1
 PORT_Unity = 52734
 
 

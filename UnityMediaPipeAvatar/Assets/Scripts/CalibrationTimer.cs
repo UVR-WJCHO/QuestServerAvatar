@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CalibrationTimer : MonoBehaviour
 {
-    public PipeServer server;
+    public Quest3_NetworkReceiver server;
     public int timer = 5;
     public KeyCode calibrationKey = KeyCode.C;
     public TextMeshProUGUI text;

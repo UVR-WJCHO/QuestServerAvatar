@@ -3016,7 +3016,7 @@ Transform:
   m_GameObject: {fileID: 700421693}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: 4.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7694,7 +7694,7 @@ GameObject:
   - component: {fileID: 1782396838}
   - component: {fileID: 1782396837}
   m_Layer: 0
-  m_Name: Avatar
+  m_Name: Avatar_test
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7720,7 +7720,7 @@ MonoBehaviour:
   footTracking: 1
   footGroundOffset: 0.1
   useCalibrationData: 1
-  calibrationData: {fileID: 11400000, guid: bea9bc2258887ad42852a1b70b83f830, type: 2}
+  calibrationData: {fileID: 11400000, guid: cb07b7222286b9046af0346c2c631beb, type: 2}
 --- !u!95 &1782396838
 Animator:
   serializedVersion: 7
@@ -7752,8 +7752,8 @@ Transform:
   m_GameObject: {fileID: 1782396836}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: -8.46, z: -1.68}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalPosition: {x: 0, y: -5.84, z: -10.39}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 700421694}
@@ -8375,7 +8375,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1055126577752158231, guid: 1eb6969b7ef8ed44a9a446e718710222, type: 3}
       propertyPath: m_Name
-      value: PipeServer
+      value: QuestNetworkManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
