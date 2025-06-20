@@ -8,7 +8,10 @@ from sys import exit
 thread = BodyThread()
 thread.start()
 
-i = input()
-print("Exiting…")
-time.sleep(0.5)
-exit()
+try:
+    input("Press any key to stop the thread and exit...\n")
+finally:
+    print("Stopping thread...")
+    global_vars.KILL_THREADS = True
+    thread.stop()  # BodyThread 클래스에 stop 메서드가 정의되어 있어야 함
+

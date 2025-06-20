@@ -48,10 +48,13 @@ class BodyThread(threading.Thread):
     pipe = None
     timeSinceCheckedConnection = 0
     timeSincePostStatistics = 0
+    _running = True
+
 
     def run(self):
         mp_drawing = mp.solutions.drawing_utils
         mp_pose = mp.solutions.pose
+        
 
         self.setup_comms()
         
@@ -65,7 +68,7 @@ class BodyThread(threading.Thread):
                 time.sleep(0.5)
             print("Beginning capture")
                 
-            while not global_vars.KILL_THREADS and capture.cap.isOpened():
+            while not global_vars.KILL_THREADS and capture.cap.isOpened() and self._running:
                 ti = time.time()
 
                 # Fetch stuff from the capture thread
@@ -109,11 +112,12 @@ class BodyThread(threading.Thread):
                 utc_string = utc_now.strftime("%Y-%m-%d %H:%M:%S.%f %Z")
                 self.data += utc_string + "\n"
                 self.send_data(self.data)
-                    
-        self.pipe.close()
+                        
+        # self.pipe.close()
         capture.cap.release()
         cv2.destroyAllWindows()
         pass
+    
 
     def setup_comms(self):
         if not global_vars.USE_LEGACY_PIPES:
@@ -146,4 +150,9 @@ class BodyThread(threading.Thread):
                     print("Failed to write to pipe. Is the unity project open?")
                     self.pipe= None
         pass
-                        
+
+    def stop(self):
+        print("Stop called")
+
+        self._running = False
+    
