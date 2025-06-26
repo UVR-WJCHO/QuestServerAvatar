@@ -12,7 +12,7 @@ public class Quest3_NetworkReceiver : MonoBehaviour
     [Header("Network Settings")]
     // pcIpAddress는 이제 UI를 통해 동적으로 설정됩니다.
     // Inspector에는 기본값 또는 마지막으로 사용된 IP를 표시할 수 있습니다.
-    [SerializeField] private string pcIpAddress = "192.168.0.5"; // 기본값
+    [SerializeField] private string pcIpAddress = "192.168.0.2"; // 기본값
     public int port = 52734;
 
     [Header("UI Elements - Inspector에서 할당")]
