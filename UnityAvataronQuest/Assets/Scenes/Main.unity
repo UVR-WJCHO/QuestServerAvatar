@@ -12248,7 +12248,7 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 0
-  footTracking: 1
+  footTracking: 0
   footGroundOffset: 0.1
   useCalibrationData: 1
   calibrationData: {fileID: 11400000, guid: 508b1384d8268104c98840d7b9884575, type: 2}
