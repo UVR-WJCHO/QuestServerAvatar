@@ -1,14 +1,19 @@
 using UnityEngine;
+using System.Collections.Generic;
 
-public class particle_spring : MonoBehaviour
+
+public class effect_clock : MonoBehaviour, IParticleEffect
 {
     public ParticleSystem particleSystem;
     float spiralSpeed = 2f;
-    float fallSpeed = 0.2f;
-    float spiralRadius = 0.4f;
+    float fallSpeed = 0.1f;
+    float spiralRadius = 0.1f;
 
     private ParticleSystem.Particle[] particles;
     private Vector3[] spiralOffsets;
+
+    // 그룹별 랜덤 오프셋 저장
+    private Dictionary<int, float> groupAngleOffsets = new Dictionary<int, float>();
 
     void Start()
     {
@@ -19,20 +24,31 @@ public class particle_spring : MonoBehaviour
         spiralOffsets = new Vector3[particles.Length];
     }
 
-    void Update()
+    public void UpdateEffect()
     {
         int count = particleSystem.GetParticles(particles);
 
         for (int i = 0; i < count; i++)
         {
             float lifePercent = 1f - (particles[i].remainingLifetime / particles[i].startLifetime);
-            float angle = lifePercent * 360f * spiralSpeed;
+            
+            // 그룹 번호 계산 (50개 단위)
+            int groupIndex = i / 50;
+
+            // 그룹별 랜덤 값 생성 (없으면 추가)
+            if (!groupAngleOffsets.ContainsKey(groupIndex))
+            {
+                groupAngleOffsets[groupIndex] = Random.Range(0f, 60f);
+            }
+
+            float angleOffset = groupAngleOffsets[groupIndex];
+            float angle = lifePercent * 360f * spiralSpeed + angleOffset;
             float radius = spiralRadius * (1f - lifePercent);
 
             Vector3 offset = new Vector3(
-                Mathf.Cos(angle * Mathf.Deg2Rad) * radius,
+                Mathf.Sin(angle * Mathf.Deg2Rad) * radius,
                 -fallSpeed * Time.deltaTime,
-                Mathf.Sin(angle * Mathf.Deg2Rad) * radius
+                Mathf.Cos(angle * Mathf.Deg2Rad) * radius
             );
 
             particles[i].position += offset;

@@ -216,7 +216,7 @@ namespace Meta.XR.Movement.Utils
         /// </summary>
         private void FindBonePairs()
         {
-            Debug.Log($"[RemoteTransforms] Start to find the bone pairs");
+            // Debug.Log($"[RemoteTransforms] Start to find the bone pairs");
 
             if (target == null)
             {
@@ -232,7 +232,7 @@ namespace Meta.XR.Movement.Utils
                 ParentJoint = target.transform
             });
 
-            Debug.Log($"[RemoteTransforms] target: "+ target._targetBones);
+            // Debug.Log($"[RemoteTransforms] target: "+ target._targetBones);
 
             foreach (var source in transforms)
             {
@@ -243,7 +243,7 @@ namespace Meta.XR.Movement.Utils
                         continue;
                     }
 
-                    Debug.Log($"[RemoteTransforms] Source: {source.name}, Target: {target.name}");
+                    // Debug.Log($"[RemoteTransforms] Source: {source.name}, Target: {target.name}");
                     bonePairs.Add(new JointPair()
                     {
                         Joint = source,
@@ -258,7 +258,7 @@ namespace Meta.XR.Movement.Utils
 
         private void UpdateJobs()
         {
-            Debug.Log($"[RemoteTransforms] Jobs Update");
+            // Debug.Log($"[RemoteTransforms] Jobs Update");
             var getBonesJob = new GetPoseJob
             {
                 IsLocal = _isLocal,
@@ -278,7 +278,7 @@ namespace Meta.XR.Movement.Utils
 
         private void ManualUpdate()
         {
-            Debug.Log($"[RemoteTransforms] Manual Update");
+            // Debug.Log($"[RemoteTransforms] Manual Update");
             FindBonePairs();
             foreach (var bonePair in _bonePairs)
             {
