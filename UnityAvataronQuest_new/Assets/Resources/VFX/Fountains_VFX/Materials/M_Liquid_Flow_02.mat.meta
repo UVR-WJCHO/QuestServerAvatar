@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 1abc42cd5657b8b4d9006d161cdf1028
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 316104
+  packageName: Fountains VFX
+  packageVersion: 1.0
+  assetPath: Assets/Fountains_VFX/Materials/M_Liquid_Flow_02.mat
+  uploadId: 746246

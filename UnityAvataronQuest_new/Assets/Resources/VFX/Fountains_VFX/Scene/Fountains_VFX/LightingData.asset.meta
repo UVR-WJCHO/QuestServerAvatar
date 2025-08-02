@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: fc8f17474272b7243877af271b171039
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 112000000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 316104
+  packageName: Fountains VFX
+  packageVersion: 1.0
+  assetPath: Assets/Fountains_VFX/Scene/Fountains_VFX/LightingData.asset
+  uploadId: 746246

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6e01377b08697b64a98bd3e897a64a01
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 316104
+  packageName: Fountains VFX
+  packageVersion: 1.0
+  assetPath: Assets/Fountains_VFX/Scene/Fountains_VFX/GlobalVolumeProfile.asset
+  uploadId: 746246

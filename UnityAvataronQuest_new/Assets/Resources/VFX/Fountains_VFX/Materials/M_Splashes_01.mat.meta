@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f7d202bc3d65fe24c83fd925462cd3af
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 316104
+  packageName: Fountains VFX
+  packageVersion: 1.0
+  assetPath: Assets/Fountains_VFX/Materials/M_Splashes_01.mat
+  uploadId: 746246

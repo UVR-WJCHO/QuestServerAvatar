@@ -7,13 +7,16 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 0
     path: Assets/Scenes/MultiPlayer.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    guid: 3583848d7fd6d414b9a027c8e3558203
   - enabled: 0
     path: Assets/Samples/Meta XR Movement SDK/77.0.1/Body Tracking Samples/Scenes/MovementBody.unity
     guid: d707936252ce4564e857133f9d24167d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MultiplayerTest.unity
     guid: ec893c50356450f41afb778d1861ab4f
+  - enabled: 1
+    path: Assets/Scenes/SinglePlayer_AR.unity
+    guid: 8a29ea5805d471f4885200fff3659f75
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: 88903395f3e45c4409b01dac24b1a428, type: 2}

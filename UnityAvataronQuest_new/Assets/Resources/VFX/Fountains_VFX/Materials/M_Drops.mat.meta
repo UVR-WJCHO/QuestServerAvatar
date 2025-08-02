@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: c825062c15d6cfe4aa7fbfc929e3a85d
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 316104
+  packageName: Fountains VFX
+  packageVersion: 1.0
+  assetPath: Assets/Fountains_VFX/Materials/M_Drops.mat
+  uploadId: 746246

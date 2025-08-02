@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: cad6e98c859314948abaf16cbd734ff4
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 625f186215c104763be7675aa2d941aa, type: 3}
+AssetOrigin:
+  serializedVersion: 1
+  productId: 316104
+  packageName: Fountains VFX
+  packageVersion: 1.0
+  assetPath: Assets/Fountains_VFX/Materials/Shaders/Liquid_Flow_Shader.shadergraph
+  uploadId: 746246
