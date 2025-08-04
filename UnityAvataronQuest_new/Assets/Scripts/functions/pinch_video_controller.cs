@@ -117,7 +117,7 @@ public class PinchVideoControllerOVR : MonoBehaviour
     
     void Update()
     {
-        CheckOVRPinchGesture();
+        // CheckOVRPinchGesture();
         
         // 거리 기반 속도 조절이 활성화되고 지속 업데이트가 켜져있으면
         if (enableDistanceSpeedControl && updateSpeedContinuously && currentPlayingPlane != null)
@@ -198,7 +198,7 @@ public class PinchVideoControllerOVR : MonoBehaviour
         Debug.DrawRay(gazeOrigin, gazeDirection * raycastDistance, Color.green, 1f);
     }
     
-    void PlayTargetVideoAndStopOthers(GameObject targetPlane)
+    public void PlayTargetVideoAndStopOthers(GameObject targetPlane)
     {
         foreach (var kvp in planeVideoPlayers)
         {
