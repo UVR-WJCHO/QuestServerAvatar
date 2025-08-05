@@ -1,118 +1,197 @@
+using System.Collections.Generic;
+using Oculus.Interaction;
 using Oculus.Interaction.Input;
-using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
-using Oculus.Interaction;
 
 public class ParticleHandControl : MonoBehaviour
 {
-    [SerializeField, Interface(typeof(IHmd))]
-    private UnityEngine.Object _hmd;
-    private IHmd Hmd { get; set; }
+    [Header("Pose Selectors")]
+    [SerializeField] private ActiveStateSelector[] _poses;
 
-    [SerializeField]
-    private ActiveStateSelector[] _poses;
+    [Header("Particle System")]
+    public ParticleSystem particleSystem;
 
-    [SerializeField]
-    private ParticleSystem particleSystem;
+    [Header("Gesture Settings")]
+    [Tooltip("흔들림 노이즈로 간주할 최소 이동 거리 (xz 평면)")]
+    [SerializeField] private float pointThreshold = 0.02f;
 
-    [SerializeField]
-    private float forceMultiplier = 2f;
-    [SerializeField]
-    private float smoothing = 0.1f; // 갑작스러운 손 떨림 방지
-    [SerializeField]
-    private bool isRockPoseActive = false;
+    [Tooltip("원/반원 제스처 인식 최소 포인트 개수")]
+    [SerializeField] private int minGesturePoints = 10;
 
-    private Vector3 startPos;
-    private Vector3 endPos;
-    private Vector3 smoothedVelocity;
+    [Tooltip("반원(π 라디안) 이상을 원형으로 간주하는 각도 임계치")]
+    [SerializeField] private float circleAngleThreshold = 5;
 
-    protected virtual void Awake()
+    [Tooltip("파티클 궤도 회전 속도 크기")]
+    [SerializeField] private float orbitalSpeed = 0.3f;
+
+    // 내부 상태
+    private bool isRockPoseActive;
+    private int currentPoseIndex = -1;
+    private Vector2 startPos2D;
+    private readonly List<Vector2> gesturePositions = new List<Vector2>();
+
+    void Start()
     {
-        Hmd = _hmd as IHmd;
-    }
-
-    protected virtual void Start()
-    {
-        this.AssertField(Hmd, nameof(Hmd));
-
+        // ActiveStateSelector 이벤트 연결
         for (int i = 0; i < _poses.Length; i++)
         {
-            int poseNumber = i;
-            _poses[i].WhenSelected += () => PoseSelected(poseNumber);
-            _poses[i].WhenUnselected += () => PoseUnselected(poseNumber);
+            int idx = i;
+            _poses[i].WhenSelected += () => PoseSelected(idx);
+            _poses[i].WhenUnselected += () => PoseUnselected(idx);
         }
-
-        startPos = Vector3.zero;
-        endPos = Vector3.zero;
-        smoothedVelocity = Vector3.zero;
     }
 
-    void ApplyForceToParticles(Vector3 force)
+    void Update()
     {
-        var velocityModule = particleSystem.velocityOverLifetime;
-        velocityModule.enabled = true;
-        velocityModule.space = ParticleSystemSimulationSpace.World;
+        if (!isRockPoseActive || currentPoseIndex < 0)
+            return;
 
-        // 초기: 아래로 떨어지다가 → 후반: 손 방향으로
-        AnimationCurve curveX = new AnimationCurve();
-        curveX.AddKey(0f, 0f);                      // 시작 속도 없음
-        curveX.AddKey(1f, force.x);                 // 마지막에 손 방향
+        // Rock 포즈 유지 중일 때: 손 위치 수집 (xz 평면)
+        var handRefs = _poses[currentPoseIndex].GetComponents<HandRef>();
+        if (handRefs.Length == 0) return;
 
-        AnimationCurve curveY = new AnimationCurve();
-        curveY.AddKey(0f, -2f);                     // 초기에 아래로 낙하
-        curveY.AddKey(1f, force.y);                 // 이후 손 방향으로 점점 이동
+        handRefs[0].GetRootPose(out Pose w);
+        Vector2 pos2D = new Vector2(w.position.x, w.position.z);
 
-        AnimationCurve curveZ = new AnimationCurve();
-        curveZ.AddKey(0f, 0f);
-        curveZ.AddKey(1f, force.z);
-
-        velocityModule.x = new ParticleSystem.MinMaxCurve(1f, curveX);
-        velocityModule.y = new ParticleSystem.MinMaxCurve(1f, curveY);
-        velocityModule.z = new ParticleSystem.MinMaxCurve(1f, curveZ);
+        // 거리 기준으로 노이즈 필터링 후 추가
+        if (gesturePositions.Count == 0 ||
+            Vector2.Distance(gesturePositions[^1], pos2D) > pointThreshold)
+        {
+            gesturePositions.Add(pos2D);
+            if (gesturePositions.Count == 1)
+                startPos2D = pos2D;
+        }
     }
-
 
     private void PoseSelected(int poseNumber)
     {
+        currentPoseIndex = poseNumber;
         isRockPoseActive = true;
-
-        var hands = _poses[poseNumber].GetComponents<HandRef>();
-        Vector3 handPos = Vector3.zero;
-        foreach (var hand in hands)
-        {
-            hand.GetRootPose(out Pose wristPose);
-            Vector3 forward = hand.Handedness == Handedness.Left ? wristPose.right : -wristPose.right;
-            handPos += wristPose.position + forward;
-        }
-        startPos = handPos;
-        Debug.Log("starting point");
-        Debug.Log(startPos);
-
+        gesturePositions.Clear();
     }
 
     private void PoseUnselected(int poseNumber)
     {
         isRockPoseActive = false;
 
-        var hands = _poses[poseNumber].GetComponents<HandRef>();
-        Vector3 handPos = Vector3.zero;
-        foreach (var hand in hands)
+        bool isCircle = false;
+        float signedAngle = 0f;
+        if (gesturePositions.Count >= minGesturePoints)
         {
-            hand.GetRootPose(out Pose wristPose);
-            Vector3 forward = hand.Handedness == Handedness.Left ? wristPose.right : -wristPose.right;
-            handPos += wristPose.position + forward;
+            signedAngle = -CalculateSignedTotalAngle(gesturePositions);
+            isCircle = Mathf.Abs(signedAngle) >= circleAngleThreshold;
         }
-        endPos = handPos;
-        Debug.Log("ending point");
-        Debug.Log(endPos);
 
-        Vector3 rawVelocity = (endPos - startPos) / Time.deltaTime;
+        if (isCircle)
+        {
+            // 원형 제스처: linear velocity 초기화 후 orbital만 설정
+            ClearDirectionalForce();
+            ApplyOrbital(Mathf.Sign(signedAngle) * orbitalSpeed);
+        }
+        else
+        {
+            // 방향 벡터 계산
+            Vector2 endPos2D = gesturePositions.Count > 0
+                ? gesturePositions[^1]
+                : startPos2D;
+            Vector2 dir = (endPos2D - startPos2D).normalized;
 
-        // 스무딩 처리 (움찔 방지)
-        smoothedVelocity = Vector3.Lerp(smoothedVelocity, rawVelocity, smoothing);
+            // orbital 초기화
+            ClearOrbital();
 
-        ApplyForceToParticles(smoothedVelocity * forceMultiplier);
+            float speedMagMin = 1f;
+            float speedMagMax = 1.5f;
+
+            Vector3 forceMin = new Vector3(
+                dir.x * speedMagMin,
+                -1.5f,
+                dir.y * speedMagMin
+            );
+            Vector3 forceMax = new Vector3(
+                dir.x * speedMagMax,
+                -1f,
+                dir.y * speedMagMax
+            );
+
+            ApplyDirectionalForce(forceMin, forceMax);
+        }
+
+        gesturePositions.Clear();
+        currentPoseIndex = -1;
     }
 
+    /// <summary>
+    /// RandomBetweenTwoConstants 모드로 x/y/z 속도 설정
+    /// </summary>
+    private void ApplyDirectionalForce(Vector3 forceMin, Vector3 forceMax)
+    //    float minX, float maxX,
+    //   float minY, float maxY,
+    //    float minZ, float maxZ)
+    {
+        var vel = particleSystem.velocityOverLifetime;
+        vel.enabled = true;
+        vel.space = ParticleSystemSimulationSpace.World;
+
+        // 랜덤 범위 설정 (MinMaxCurve(min, max) → RandomBetweenConstants)
+        vel.x = new ParticleSystem.MinMaxCurve(forceMin.x, forceMax.x);
+        vel.y = new ParticleSystem.MinMaxCurve(forceMin.y, forceMax.y);
+        vel.z = new ParticleSystem.MinMaxCurve(forceMin.z, forceMax.z);
+    }
+
+    /// <summary>
+    /// linear velocity (x/z) 모두 0으로 초기화
+    /// </summary>
+    private void ClearDirectionalForce()
+    {
+        var vel = particleSystem.velocityOverLifetime;
+        vel.enabled = true;
+        vel.space = ParticleSystemSimulationSpace.World;
+
+        vel.x = new ParticleSystem.MinMaxCurve(0f, 0f);
+        vel.z = new ParticleSystem.MinMaxCurve(0f, 0f);
+    }
+
+    /// <summary>
+    /// orbitalY 속도 적용
+    /// </summary>
+    private void ApplyOrbital(float speed)
+    {
+        var vel = particleSystem.velocityOverLifetime;
+        vel.enabled = true;
+        vel.space = ParticleSystemSimulationSpace.World;
+
+        vel.orbitalY = new ParticleSystem.MinMaxCurve(speed);
+    }
+
+    /// <summary>
+    /// orbital 설정 초기화 (0으로)
+    /// </summary>
+    private void ClearOrbital()
+    {
+        var vel = particleSystem.velocityOverLifetime;
+        vel.enabled = true;
+        vel.orbitalY = new ParticleSystem.MinMaxCurve(0f);
+    }
+
+    /// <summary>
+    /// gesturePositions를 중심으로 한 signed 총 회전 각도 (라디안) 계산
+    /// </summary>
+    private float CalculateSignedTotalAngle(List<Vector2> pts)
+    {
+        int n = pts.Count;
+        Vector2 center = Vector2.zero;
+        foreach (var p in pts) center += p;
+        center /= n;
+
+        float total = 0f;
+        for (int i = 1; i < n; i++)
+        {
+            Vector2 v1 = (pts[i - 1] - center).normalized;
+            Vector2 v2 = (pts[i] - center).normalized;
+            float deg = Vector2.SignedAngle(v1, v2);
+            total += deg * Mathf.Deg2Rad;
+        }
+        return total;
+    }
 }
