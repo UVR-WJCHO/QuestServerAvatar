@@ -1,3 +1,4 @@
 UnityMediaPipeAvatar/Assets/unity-chan!/* linguist-vendored
 *.shader linguist-vendored
 *.cg linguist-vendored
+*.zip filter=lfs diff=lfs merge=lfs -text
