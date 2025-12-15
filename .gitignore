@@ -1,6 +1,11 @@
 *.mp4
 *.mp4.meta
 
+
+/UnityAvataronQuest_new/Assets/Resources/contents/Video/*.mp4
+
+
+
 # ---> Unity
 # This .gitignore file should be placed at the root of your Unity project directory
 #
