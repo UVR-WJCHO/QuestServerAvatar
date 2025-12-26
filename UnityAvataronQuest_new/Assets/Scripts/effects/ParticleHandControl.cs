@@ -129,6 +129,8 @@ public class ParticleHandControl : MonoBehaviour
     //   float minY, float maxY,
     //    float minZ, float maxZ)
     {
+        if (particleSystem == null) return;
+
         var vel = particleSystem.velocityOverLifetime;
         vel.enabled = true;
         vel.space = ParticleSystemSimulationSpace.World;
@@ -144,6 +146,8 @@ public class ParticleHandControl : MonoBehaviour
     /// </summary>
     private void ClearDirectionalForce()
     {
+        if (particleSystem == null) return;
+
         var vel = particleSystem.velocityOverLifetime;
         vel.enabled = true;
         vel.space = ParticleSystemSimulationSpace.World;
@@ -157,6 +161,8 @@ public class ParticleHandControl : MonoBehaviour
     /// </summary>
     private void ApplyOrbital(float speed)
     {
+        if (particleSystem == null) return;
+
         var vel = particleSystem.velocityOverLifetime;
         vel.enabled = true;
         vel.space = ParticleSystemSimulationSpace.World;
@@ -169,6 +175,8 @@ public class ParticleHandControl : MonoBehaviour
     /// </summary>
     private void ClearOrbital()
     {
+        if (particleSystem == null) return;
+
         var vel = particleSystem.velocityOverLifetime;
         vel.enabled = true;
         vel.orbitalY = new ParticleSystem.MinMaxCurve(0f);

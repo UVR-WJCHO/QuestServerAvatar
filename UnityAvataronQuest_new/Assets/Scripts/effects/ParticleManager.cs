@@ -65,15 +65,25 @@ public class ParticleManager : MonoBehaviour
 
         foreach (var s in seasonalParticles)
         {
+            var temp = s.particleSystem.transform.GetComponent<SeasonCollisionResponder>();
+
             if (s.season.type == season_type)
             {
                 particleHandControl.particleSystem = s.particleSystem;
                 selectedSystem = s.particleSystem;
                 selectedSystem.Play();
+                if (temp.stampParent != null)
+                    temp.stampParent.SetActive(true);
+                if (temp.groundEffect != null)
+                    temp.groundEffect.SetActive(true);
             }
             else
             {
-                s.particleSystem.Stop();
+                s.particleSystem.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+                if (temp.stampParent != null)
+                    temp.stampParent.SetActive(false);
+                if (temp.groundEffect != null)
+                    temp.groundEffect.SetActive(false);
                 var col = s.particleSystem.collision;
                 col.collidesWith = s.originalCollisionMask;
             }

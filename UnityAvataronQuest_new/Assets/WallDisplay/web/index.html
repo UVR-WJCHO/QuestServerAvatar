@@ -1,0 +1,33 @@
+<video id="vid" autoplay muted playsinline controls loop></video>
+
+<script>
+  const params = new URLSearchParams(location.search);
+  const SCREEN_ID = (params.get("screen") || "A").trim().toUpperCase();
+
+  // ✅ 이제 videoKey는 파일명과 분리된 “콘텐츠 ID”
+  const VIDEO_KEY = (params.get("video") || "intro").trim();
+
+  // ✅ videoKey -> 실제 파일 경로 매핑 (서버에 videos 폴더 두는 방식)
+  // 예: web/videos/intro.mp4, web/videos/clip7.mp4 ...
+  const VIDEO_URL = `videos/${VIDEO_KEY}.mp4`;
+
+  const SERVER = ""; // same origin
+  const vid = document.getElementById("vid");
+  vid.src = VIDEO_URL;
+
+  async function sendTime() {
+    const t = (vid && Number.isFinite(vid.currentTime)) ? vid.currentTime : 0;
+    try {
+      await fetch(`${SERVER}/video/time`, {
+        method: "POST",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify({ screenId: SCREEN_ID, videoKey: VIDEO_KEY, t })
+      });
+    } catch(e) {}
+  }
+
+  setInterval(sendTime, 200);
+  ["play","pause","seeking","seeked","ratechange","loadeddata"].forEach(ev => {
+    vid.addEventListener(ev, sendTime);
+  });
+</script>

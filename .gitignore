@@ -4,7 +4,10 @@
 
 /UnityAvataronQuest_new/Assets/Resources/contents/Video/*
 
-
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
 
 # ---> Unity
 # This .gitignore file should be placed at the root of your Unity project directory
