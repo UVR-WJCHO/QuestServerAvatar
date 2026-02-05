@@ -2,16 +2,33 @@ using UnityEngine;
 
 public class FloorSnapper : MonoBehaviour
 {
-    public Transform groupRoot;    
-    public Transform cubeBody;     
-    public Transform floor;         
+    public Transform groupRoot;
+    public Transform cubeBody;
+    public Transform floor; 
 
     public float targetGap = 0f;
     public float snapRange = 0.5f;
-    public float snapLerpSpeed = 0f; 
+    public float snapLerpSpeed = 0f;
     public bool stickyWhileClose = true;
 
     bool _snappedOnce = false;
+
+    void Awake()
+    {
+        if (floor == null)
+        {
+            GameObject baseObj = GameObject.Find("base");
+            if (baseObj != null)
+            {
+                floor = baseObj.transform;
+                Debug.Log($"{gameObject.name}: 'base' 객체를 자동으로 찾아 할당했습니다.");
+            }
+            else
+            {
+                Debug.LogWarning($"{gameObject.name}: 씬에서 'base'라는 이름의 객체를 찾을 수 없습니다!");
+            }
+        }
+    }
 
     void Reset()
     {
@@ -27,7 +44,7 @@ public class FloorSnapper : MonoBehaviour
 
         float floorY = floor.position.y;
         float wantBottomY = floorY + targetGap;
-        float dy = wantBottomY - cubeBottomY;  
+        float dy = wantBottomY - cubeBottomY;
         float absDy = Mathf.Abs(dy);
 
         bool inRange = absDy <= snapRange;
@@ -54,6 +71,7 @@ public class FloorSnapper : MonoBehaviour
     bool TryGetBottomY(Transform t, out float bottomY)
     {
         bottomY = 0f;
+        if (t == null) return false;
 
         var col = t.GetComponentInChildren<Collider>();
         if (col)
