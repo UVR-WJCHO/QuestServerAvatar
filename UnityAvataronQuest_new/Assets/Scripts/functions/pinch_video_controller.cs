@@ -228,7 +228,8 @@ public class PinchVideoControllerOVR : MonoBehaviour
             {
                 if (videoPlayer.isPlaying)
                 {
-                    videoPlayer.Pause();
+                    // multi로 바뀌면 수정해야됨
+                    // videoPlayer.Pause();
                     Debug.Log($"Video stopped: {videoPlayer.name} on plane {plane.name}");
                 }
             }

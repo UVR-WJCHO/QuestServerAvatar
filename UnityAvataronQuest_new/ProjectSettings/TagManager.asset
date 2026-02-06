@@ -52,7 +52,7 @@ TagManager:
   - Ground
   - CeilCollider1
   - CeilCollider2
-  - 
+  - WallCollider
   - 
   - 
   - 
