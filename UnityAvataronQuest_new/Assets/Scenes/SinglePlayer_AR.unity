@@ -103102,7 +103102,7 @@ PrefabInstance:
     - target: {fileID: 8400107386282219851, guid: 0b547cb3a7f125d458360c867876c566, type: 3}
       propertyPath: m_VideoClip
       value: 
-      objectReference: {fileID: 32900000, guid: d82dac79f068ccc46bfc63e2ea252761, type: 3}
+      objectReference: {fileID: 32900000, guid: 1f5045ef8e8a66a449e07cbaf1d7c26e, type: 3}
     - target: {fileID: 8400107386282219851, guid: 0b547cb3a7f125d458360c867876c566, type: 3}
       propertyPath: m_SkipOnDrop
       value: 0
@@ -103117,12 +103117,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8400107386282219851, guid: 0b547cb3a7f125d458360c867876c566, type: 3}
       propertyPath: m_AudioOutputMode
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8733656297078267361, guid: 0b547cb3a7f125d458360c867876c566, type: 3}
       propertyPath: m_VideoClip
       value: 
-      objectReference: {fileID: 32900000, guid: a496a298ef1f65a458ab6ebfee2f79e9, type: 3}
+      objectReference: {fileID: 32900000, guid: 4596529b89327564ca95d594ca43b308, type: 3}
     - target: {fileID: 8733656297078267361, guid: 0b547cb3a7f125d458360c867876c566, type: 3}
       propertyPath: m_SkipOnDrop
       value: 0
@@ -103133,7 +103133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8733656297078267361, guid: 0b547cb3a7f125d458360c867876c566, type: 3}
       propertyPath: m_AudioOutputMode
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8899135613092123956, guid: 0b547cb3a7f125d458360c867876c566, type: 3}
       propertyPath: m_LocalPosition.x
