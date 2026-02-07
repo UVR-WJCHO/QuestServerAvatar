@@ -214,6 +214,7 @@ public class PinchVideoControllerOVR : MonoBehaviour
                 }
                 else
                 {
+                    videoPlayer.Pause();
                     Debug.Log($"Video already playing: {videoPlayer.name} on plane {plane.name}");
                 }
                 
