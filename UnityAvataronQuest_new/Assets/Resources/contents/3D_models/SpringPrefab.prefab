@@ -2127,6 +2127,8 @@ GameObject:
   - component: {fileID: 331833484467700241}
   - component: {fileID: 3954751521564704138}
   - component: {fileID: 1316134973113763355}
+  - component: {fileID: 1798190123291119420}
+  - component: {fileID: -4221267722346764884}
   m_Layer: 0
   m_Name: SpringPrefab
   m_TagString: Untagged
@@ -2207,10 +2209,50 @@ MonoBehaviour:
   groupRoot: {fileID: 331833484467700241}
   cubeBody: {fileID: 7126807699488082254}
   floor: {fileID: 0}
+  grabbable: {fileID: 0}
   targetGap: 0
   snapRange: 0.5
   snapLerpSpeed: 0
   stickyWhileClose: 1
+--- !u!114 &1798190123291119420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9088790172136698803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 2100000, guid: e128eb6ab001f6a4fb15cfbfc909f661, type: 2}
+  m_DrawDistance: 1000
+  m_FadeScale: 0.9
+  m_StartAngleFade: 180
+  m_EndAngleFade: 180
+  m_UVScale: {x: 1, y: 1}
+  m_UVBias: {x: 0, y: 0}
+  m_DecalLayerMask: 2
+  m_ScaleMode: 0
+  m_Offset: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 2}
+  m_FadeFactor: 1
+--- !u!114 &-4221267722346764884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9088790172136698803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ba1bed7832cca14c96b4680c206ec3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floorObjectName: base
+  targetRadius: 2
+  spreadSpeed: 1.5
 --- !u!1001 &3138309282868488694
 PrefabInstance:
   m_ObjectHideFlags: 0

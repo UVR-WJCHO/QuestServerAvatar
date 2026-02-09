@@ -71,11 +71,13 @@ public class ResizableCubeController_Oculus : MonoBehaviour
     void Update()
     {
         int grabbedHandleIdx = GetGrabbedHandleIndex();
+
         if (grabbedHandleIdx >= 0)
         {
             _activeHandleIdx = grabbedHandleIdx;
-            ResizeWithActiveHandle(_activeHandleIdx); 
+            ResizeWithActiveHandle(_activeHandleIdx);
             CacheCubeState();
+
             _lockedLocalScale = cubeBody.localScale;
             return;
         }
@@ -86,14 +88,6 @@ public class ResizableCubeController_Oculus : MonoBehaviour
 
         bool cubeGrabbed = IsGrabbed(cubeGrabbable);
 
-        Vector3 center = GetCubeWorldCenter();
-        Vector3 size = GetCubeWorldSize();
-        Quaternion rot = cubeBody.rotation;
-
-        bool moved = (center - _lastCenterW).sqrMagnitude > 1e-10f;
-        bool sized = (size - _lastSizeW).sqrMagnitude > 1e-10f;
-        bool rotated = Quaternion.Angle(rot, _lastRotW) > 0.001f;
-
         if (!_wasCubeGrabbed && cubeGrabbed)
         {
             if (disableScaleTransformersDuringGrab)
@@ -101,6 +95,8 @@ public class ResizableCubeController_Oculus : MonoBehaviour
         }
         else if (_wasCubeGrabbed && !cubeGrabbed)
         {
+            cubeBody.localScale = _lockedLocalScale;
+
             if (disableScaleTransformersDuringGrab)
                 DisableScaleTransformers(false);
         }
@@ -108,14 +104,14 @@ public class ResizableCubeController_Oculus : MonoBehaviour
         if (cubeGrabbed && _activeHandleIdx < 0)
         {
             if ((cubeBody.localScale - _lockedLocalScale).sqrMagnitude > 1e-10f)
+            {
                 cubeBody.localScale = _lockedLocalScale;
+            }
         }
 
-        if (cubeGrabbed || moved || sized || rotated)
+        if (cubeGrabbed || (GetCubeWorldCenter() - _lastCenterW).sqrMagnitude > 1e-10f)
         {
-            _lastCenterW = center;
-            _lastSizeW = size;
-            _lastRotW = rot;
+            CacheCubeState();
         }
 
         _wasCubeGrabbed = cubeGrabbed;
