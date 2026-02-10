@@ -1,5 +1,6 @@
 using UnityEngine;
-using Oculus.Interaction; // Grabbable 사용을 위해 필요
+using Oculus.Interaction;
+using System.Diagnostics; // Grabbable 사용을 위해 필요
 
 public class FloorSnapper : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class FloorSnapper : MonoBehaviour
 
     private bool _snappedOnce = false;
     private Rigidbody _rb;
+
+    private bool _activateEffect = true;
 
     void Awake()
     {
@@ -54,6 +57,18 @@ public class FloorSnapper : MonoBehaviour
         {
             float currentBottom = GetBottomY(cubeBody);
             dy = wantBottomY - currentBottom;
+
+            if (_activateEffect)
+            {
+                _activateEffect = false;
+                var effectScript = GetComponentInChildren<ModelBaseEffectTrigger>();
+                if (effectScript != null)
+                {
+                    UnityEngine.Debug.Log("-------------------------------Starting floor snap effect.");
+                    effectScript.StartEffect(); // 자식의 효과 시작 함수 호출
+                }
+            }
+            
         }
 
         bool inRange = Mathf.Abs(dy) <= snapRange;

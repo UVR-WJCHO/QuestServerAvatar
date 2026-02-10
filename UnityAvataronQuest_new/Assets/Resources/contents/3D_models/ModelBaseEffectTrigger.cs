@@ -1,48 +1,44 @@
 using UnityEngine;
-using System.Collections;
+using UnityEngine.Rendering.Universal;
 
 public class ModelBaseEffectTrigger : MonoBehaviour
 {
-    private Material targetMaterial;
-    public string floorObjectName = "base"; // 씬에 있는 바닥 오브젝트 이름
-    public float targetRadius = 2.0f;       // 최종 반지름
-    public float spreadSpeed = 1.5f;        // 퍼지는 속도
+    private DecalProjector projector;
+    private Material decalInstancedMaterial;
+    
+    public float targetRadius = 0.45f; // UV 기반일 때 0.5가 최대 원입니다.
+    public float spreadSpeed = 1.0f;
 
     void Start()
     {
-        // 1. 씬에서 이름으로 바닥 오브젝트를 찾습니다.
-        GameObject floor = GameObject.Find(floorObjectName);
+        projector = GetComponent<DecalProjector>();
         
-        if (floor != null)
+        if (projector != null)
         {
-            // 2. 바닥의 마테리얼을 가져옵니다.
-            targetMaterial = floor.GetComponent<Renderer>().material;
+            // 마테리얼 복사본 생성 및 프로젝터에 재할당 (중요)
+            decalInstancedMaterial = new Material(projector.material);
+            projector.material = decalInstancedMaterial; 
             
-            // 3. 효과 시작 (코루틴으로 부드럽게 확산)
-            StartCoroutine(SpreadAlpha());
-        }
-        else
-        {
-            Debug.LogError($"{floorObjectName} 오브젝트를 씬에서 찾을 수 없습니다!");
+            decalInstancedMaterial.SetFloat("_Radius", 0f);
+            // StartCoroutine(AnimateSpread());
         }
     }
-
-    void Update()
+    public void StartEffect()
     {
-        // 모델이 이동할 수도 있으므로 실시간으로 위치 업데이트
-        if (targetMaterial != null)
-        {
-            targetMaterial.SetVector("_Center", transform.position);
-        }
+        StartCoroutine(AnimateSpread());
     }
 
-    IEnumerator SpreadAlpha()
+    System.Collections.IEnumerator AnimateSpread()
     {
         float currentRadius = 0f;
         while (currentRadius < targetRadius)
         {
             currentRadius += Time.deltaTime * spreadSpeed;
-            targetMaterial.SetFloat("_Radius", currentRadius);
+            // 셰이더 그래프의 '_Radius' 변수 이름을 정확히 입력하세요.
+            decalInstancedMaterial.SetFloat("_Radius", currentRadius);
+            // 2. 강제 업데이트: 마테리얼을 다시 할당하여 에디터 갱신 유도
+            projector.material = decalInstancedMaterial;
+            Debug.Log(currentRadius);
             yield return null;
         }
     }
